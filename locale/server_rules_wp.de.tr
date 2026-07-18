@@ -1,0 +1,11 @@
+# textdomain: server_rules_wp
+Rules are currently loading or unavailable.=Die Regeln werden gerade geladen oder sind aktuell nicht erreichbar.
+Error formatting rules.=Fehler beim Formatieren der Regeln.
+Error: No URL configured. Please contact admin.=Fehler: Keine URL konfiguriert. Bitte Admin kontaktieren.
+Error: Mod lacks internet permission. Please contact admin.=Fehler: Mod hat keine Internet-Erlaubnis. Bitte Admin kontaktieren.
+Reloads rules from the WordPress page (Admins only)=Lädt die Regeln neu von der WordPress-Seite (Nur für Admins)
+Rules are being reloaded in the background...=Regeln werden im Hintergrund neu geladen...
+Shows the server rules in a window=Zeigt die Serverregeln in einem Fenster an
+Rules=Regeln
+Close=Schließen
+Rules are being displayed.=Regeln werden angezeigt.

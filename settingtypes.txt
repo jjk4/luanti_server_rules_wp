@@ -1,0 +1,1 @@
+server_rules_wp_url (WordPress JSON URL) string

@@ -130,19 +130,34 @@ minetest.register_chatcommand("rules", {
     func = function(name, param)
         local safe_text = minetest.formspec_escape(cached_rules)
         
-
-        local style_header = "<global color=\"#E0E0E0\" size=16 valign=top>" ..
-            "<tag name=\"h1\" color=\"#FFFFFF\" size=28 font=\"bold\">" ..
-            "<tag name=\"h2\" color=\"#FFD700\" size=24 font=\"bold\">" ..
-            "<tag name=\"h3\" color=\"#FFD700\" size=20 font=\"bold\">" ..
-            "<tag name=\"h4\" color=\"#FFCC00\" size=18 font=\"bold\">" ..
-            "<tag name=\"b\" color=\"#FFFFFF\" font=\"bold\">" ..
-            "<tag name=\"i\" font=\"italic\">"
+        -- Spiel-ID abfragen, um das Design an das jeweilige Spiel (Voxelibre/MineClone2) anzupassen
+        local game_id = minetest.get_game_info().id
+        local is_light_bg = (game_id == "mineclone2" or game_id == "mineclonia" or game_id == "voxelibre")
+        
+        local style_header = ""
+        
+        if is_light_bg then
+            -- Dunkle Schriftfarben für Voxelibre (Heller Hintergrund)
+            style_header = "<global color=\"#222222\" size=16 valign=top>" ..
+                "<tag name=\"h1\" color=\"#000000\" size=28 font=\"bold\">" ..
+                "<tag name=\"h2\" color=\"#AA6600\" size=24 font=\"bold\">" ..
+                "<tag name=\"h3\" color=\"#AA6600\" size=20 font=\"bold\">" ..
+                "<tag name=\"h4\" color=\"#B8860B\" size=18 font=\"bold\">" ..
+                "<tag name=\"b\" color=\"#000000\" font=\"bold\">" ..
+                "<tag name=\"i\" font=\"italic\">"
+        else
+            -- Helle Schriftfarben für Minetest Game (Dunkler Hintergrund)
+            style_header = "<global color=\"#E0E0E0\" size=16 valign=top>" ..
+                "<tag name=\"h1\" color=\"#FFFFFF\" size=28 font=\"bold\">" ..
+                "<tag name=\"h2\" color=\"#FFD700\" size=24 font=\"bold\">" ..
+                "<tag name=\"h3\" color=\"#FFD700\" size=20 font=\"bold\">" ..
+                "<tag name=\"h4\" color=\"#FFCC00\" size=18 font=\"bold\">" ..
+                "<tag name=\"b\" color=\"#FFFFFF\" font=\"bold\">" ..
+                "<tag name=\"i\" font=\"italic\">"
+        end
             
         local full_hypertext = style_header .. safe_text
         
-
-
         local formspec = "size[12,9]" ..
             "label[0.2,0.2;" .. minetest.formspec_escape(S("Rules")) .. "]" ..
             "box[0.2,0.6;11.6,0.05;#888888]" ..
@@ -150,6 +165,6 @@ minetest.register_chatcommand("rules", {
             "button_exit[5,8.4;2,0.6;close;" .. minetest.formspec_escape(S("Close")) .. "]"
         
         minetest.show_formspec(name, "server_rules_wp:rules_form", formspec)
-        return true, S("Rules are being displayed.")
+        return true
     end,
 })

@@ -43,3 +43,5 @@ server_rules_wp_url = https://jojokorpi.ddns.net/mt-servers-by-walker/index.php/
 * **"Error: Mod lacks internet permission"**: Double-check your `secure.http_mods` setting in `minetest.conf`.
 * **"Error: No URL configured"**: Ensure `server_rules_wp_url` is properly set and has no typos.
 * **Text looks messy or tags are visible**: Ensure your WordPress page uses standard block elements. The mod automatically filters most complex HTML, but plain `<p>`, `<h1>` to `<h4>`, `<ul>`, and `<li>` work best.
+
+This project was created with the help of AI
